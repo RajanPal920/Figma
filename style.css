@@ -46,6 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  
 }
 
 #toolbar {
@@ -53,7 +54,7 @@ body {
   min-width: 200px;
   height: 100vh;
   padding: 16px;
-  gap: 24px;
+  gap: 20px;
 }
 
 #toolbar2 {
