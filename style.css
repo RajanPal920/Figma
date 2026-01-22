@@ -1,0 +1,358 @@
+:root {
+  --bg-main: #0f1014;
+  --bg-panel: #1c1e26;
+  --bg-card: #242635;
+  --border-soft: #2f3142;
+  --primary: #4c9aff;
+  --text-main: #e6e6eb;
+  --text-muted: #9aa0b4;
+  --danger: #ff4d4f;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Grande", Geneva, Verdana, sans-serif;
+  transition: all 0.2s ease;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #1c1e26, #0f1014 70%);
+  color: var(--text-main);
+}
+
+#toolbar, #toolbar2 {
+  flex-shrink: 0;
+  background: rgba(28, 30, 38, 0.85);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#toolbar {
+  width: 20%;
+  min-width: 200px;
+  height: 100%;
+  padding: 16px;
+  gap: 24px;
+}
+
+#toolbar2 {
+  width: 20%;
+  min-width: 200px;
+  padding: 16px;
+  gap: 16px;
+  max-height: 100vh;
+}
+
+#toolbar > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+}
+
+#toolbar h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#toolbar h5 {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+#toolbar h5 span {
+  background: #555;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  font-size: 10px;
+}
+
+.toolbar-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+}
+
+.libraries {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.library-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.library-icons img {
+  width: 100%;
+  height: 150px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: #777;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.library-icons img:hover {
+  outline: 2px solid var(--primary);
+  transform: scale(1.05);
+}
+
+#toolbar h4 {
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#toolbar i {
+  cursor: pointer;
+}
+
+#toolbar i:hover {
+  opacity: 0.7;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+}
+
+#toolbar2 h1 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-main);
+}
+
+.Properties {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.Properties label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.Properties input[type="text"],
+.Properties input[type="range"],
+.Properties input[type="color"],
+.Properties input[type="number"],
+.Properties select {
+  width: 100%;
+  height: 32px;
+  background: #2e2e2e;
+  border: 1px solid #666;
+  border-radius: var(--radius-sm);
+  color: white;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+.Properties input[type="range"] {
+  height: 6px;
+  padding: 0;
+}
+
+.Properties input:focus,
+.Properties select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+#layers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px;
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+}
+
+#layers > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  min-width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  background: #4a4848;
+}
+
+#layers > div.selected {
+  background: #4c9aff33;
+}
+
+#editor {
+  flex: 1;
+  display: flex;
+  background: #e5e5e5a9;
+  position: relative;
+  min-width: 0;
+}
+
+#canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: #fafafae2;
+  overflow: hidden;
+}
+
+.canvas-element {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  cursor: move;
+  box-sizing: border-box;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.canvas-element:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.canvas-element.selected {
+  outline: 2px solid var(--primary);
+  box-shadow: 0 0 0 4px rgba(76, 154, 255, 0.25);
+}
+
+.text-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: var(--danger);
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 77, 79, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.15s ease;
+}
+
+.canvas-element.selected .delete-btn {
+  display: flex;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+}
+
+#box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  max-width: 90%;
+  height: 60px;
+  background: rgba(28, 30, 38, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  padding: 0 10px;
+  z-index: 100;
+}
+
+#box i {
+  font-size: 28px;
+  color: #e6e6eb;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ri-square-line:hover {
+  background: rgba(76, 154, 255, 0.8);
+  transform: scale(1.2);
+  color: white;
+}
+.ri-circle-line:hover {
+  background: rgba(76, 255, 76, 0.8);
+  transform: scale(1.2);
+  color: white;
+}
+.ri-triangle-line:hover {
+  background: rgba(255, 76, 76, 0.8);
+  transform: scale(1.2);
+  color: white;
+}
+.ri-text:hover {
+  background: rgba(255, 154, 76, 0.883);
+  transform: scale(1.2);
+  color: white;
+}
+
+#box i:active {
+  transform: scale(1);
+}
